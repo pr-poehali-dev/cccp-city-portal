@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
+import { useEffect, useState } from "react";
 
 const News = () => {
-  const news = [
+  const defaultNews = [
     {
       id: 1,
       date: "25.11.2025",
@@ -31,6 +32,17 @@ const News = () => {
       author: "Сталин"
     }
   ];
+
+  const [news, setNews] = useState(defaultNews);
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+
+  useEffect(() => {
+    const storedNews = localStorage.getItem("news");
+    if (storedNews) {
+      const parsedNews = JSON.parse(storedNews);
+      setNews([...parsedNews, ...defaultNews]);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -98,6 +110,17 @@ const News = () => {
             Официальные новости, постановления и объявления
           </p>
         </div>
+
+        {isAdmin && (
+          <div className="mb-6">
+            <Link to="/admin">
+              <Button size="lg" className="w-full md:w-auto">
+                <Icon name="Plus" className="mr-2" size={20} />
+                Добавить новость
+              </Button>
+            </Link>
+          </div>
+        )}
 
         <div className="space-y-6">
           {news.map((item) => (

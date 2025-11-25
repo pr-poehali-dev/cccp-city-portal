@@ -10,11 +10,11 @@ const Home = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16">
-                <div className="absolute inset-0 bg-secondary rounded-full flex items-center justify-center">
-                  <span className="text-4xl">☭</span>
-                </div>
-              </div>
+              <img 
+                src="https://cdn.poehali.dev/files/666494e0-d9a2-4e40-82df-5aa3997e4927.png" 
+                alt="Флаг ЦК КПСС" 
+                className="w-16 h-16 object-cover rounded border-2 border-secondary"
+              />
               <div>
                 <h1 className="text-2xl font-bold text-foreground uppercase tracking-wider">
                   ЦК КПСС
@@ -24,6 +24,12 @@ const Home = () => {
                 </p>
               </div>
             </div>
+            <Link to="/login">
+              <Button variant="outline" size="sm">
+                <Icon name="Lock" className="mr-2" size={16} />
+                Вход
+              </Button>
+            </Link>
           </div>
         </div>
       </header>
