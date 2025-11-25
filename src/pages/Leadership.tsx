@@ -5,14 +5,20 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 
 const Leadership = () => {
-  const leaders = [
-    { name: "Сталин", role: "ГенСек ЦК КПСС", fullRole: "Генеральный Секретарь Центрального Комитета Коммунистической Партии Советского Союза", priority: 1 },
-    { name: "Алексей", role: "1й Зам ГенСека ЦК КПСС", fullRole: "Первый Заместитель Генерального Секретаря ЦК КПСС", priority: 2 },
-    { name: "Карл Вагнер", role: "Главный Бригадир", fullRole: "Главный Бригадир городского округа Люберцы", priority: 3 },
-    { name: "Денис", role: "Начальник Метрополитена", fullRole: "Начальник Метрополитена", priority: 3 },
-    { name: "Даня", role: "НарКом Армии", fullRole: "Народный Комиссар Армии", priority: 3 },
-    { name: "Блохин", role: "НарКом ТяжПрома", fullRole: "Народный Комиссар Тяжёлой Промышленности", priority: 3 },
-    { name: "Илья", role: "Глава ГО Энгельс", fullRole: "Глава Городского Образования Энгельс", priority: 3 },
+  const highLeadership = [
+    { name: "Сталин", role: "ГенСек ЦК КПСС", fullRole: "Генеральный Секретарь Центрального Комитета Коммунистической Партии Советского Союза" },
+    { name: "Алексей", role: "1й Зам ГенСека ЦК КПСС", fullRole: "Первый Заместитель Генерального Секретаря ЦК КПСС" },
+  ];
+
+  const government = [
+    { name: "Карл", role: "Главный Бригадир", fullRole: "Главный Бригадир городского округа Люберцы" },
+    { name: "Денис", role: "Начальник Метрополитена", fullRole: "Начальник Метрополитена" },
+    { name: "Блохин", role: "НарКом ТяжПрома", fullRole: "Народный Комиссар Тяжёлой Промышленности" },
+    { name: "Илья", role: "Глава ГО Энгельс", fullRole: "Глава Городского Образования Энгельс" },
+  ];
+
+  const military = [
+    { name: "Даня", role: "НарКом Армии", fullRole: "Народный Комиссар Армии" },
   ];
 
   const citizens = [
@@ -29,11 +35,11 @@ const Leadership = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="relative w-16 h-16">
-                <div className="absolute inset-0 bg-secondary rounded-full flex items-center justify-center">
-                  <span className="text-4xl">☭</span>
-                </div>
-              </div>
+              <img 
+                src="https://cdn.poehali.dev/files/666494e0-d9a2-4e40-82df-5aa3997e4927.png" 
+                alt="Флаг ЦК КПСС" 
+                className="w-16 h-16 object-cover rounded border-2 border-secondary"
+              />
               <div>
                 <h1 className="text-2xl font-bold text-foreground uppercase tracking-wider">
                   ЦК КПСС
@@ -75,6 +81,11 @@ const Leadership = () => {
                 Метрополитен
               </Button>
             </Link>
+            <Link to="/gallery">
+              <Button variant="ghost" className="text-primary-foreground hover:bg-primary/80 rounded-none">
+                Галерея
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -93,18 +104,76 @@ const Leadership = () => {
         <div className="mb-12">
           <h3 className="text-2xl font-bold mb-6 uppercase flex items-center gap-2">
             <span className="text-secondary text-3xl">★</span>
-            Высшее Руководство
+            Высшее Руководство ЦК КПСС
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {highLeadership.map((leader, idx) => (
+              <Card key={idx} className="p-8 border-2 border-primary hover:border-secondary transition-colors">
+                <div className="flex items-start gap-6">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary via-primary/80 to-primary/60 flex items-center justify-center border-4 border-secondary flex-shrink-0 relative">
+                    <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,215,0,0.3),transparent)]" />
+                    <span className="text-5xl relative z-10">☭</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-2xl font-bold mb-2">{leader.name}</h4>
+                    <Badge className="mb-3 bg-primary hover:bg-primary">
+                      {leader.role}
+                    </Badge>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {leader.fullRole}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-12">
+          <h3 className="text-2xl font-bold mb-6 uppercase flex items-center gap-2">
+            <Icon name="Building2" className="text-primary" size={28} />
+            Правительство
           </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {leaders.map((leader, idx) => (
+            {government.map((leader, idx) => (
               <Card key={idx} className="p-6 border-2 hover:border-primary transition-colors">
                 <div className="flex items-start gap-4">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-3xl border-2 border-secondary flex-shrink-0">
-                    👤
+                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-muted via-muted/80 to-muted/60 flex items-center justify-center border-2 border-border flex-shrink-0">
+                    <svg className="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                      <circle cx="12" cy="8" r="4"/>
+                      <path d="M12 14c-6 0-8 4-8 6v2h16v-2c0-2-2-6-8-6z"/>
+                    </svg>
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="text-xl font-bold mb-2">{leader.name}</h4>
-                    <Badge className="mb-3 bg-primary hover:bg-primary text-xs">
+                    <Badge variant="outline" className="mb-3 text-xs">
+                      {leader.role}
+                    </Badge>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {leader.fullRole}
+                    </p>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-12">
+          <h3 className="text-2xl font-bold mb-6 uppercase flex items-center gap-2">
+            <Icon name="Shield" className="text-primary" size={28} />
+            Армия
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            {military.map((leader, idx) => (
+              <Card key={idx} className="p-8 border-2 border-primary/50 hover:border-primary transition-colors bg-gradient-to-br from-card to-primary/5">
+                <div className="flex items-start gap-6">
+                  <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary/30 via-primary/20 to-primary/10 flex items-center justify-center border-2 border-primary flex-shrink-0">
+                    <Icon name="Shield" className="text-primary" size={40} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-2xl font-bold mb-2">{leader.name}</h4>
+                    <Badge className="mb-3 bg-primary hover:bg-primary">
                       {leader.role}
                     </Badge>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -124,8 +193,11 @@ const Leadership = () => {
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
             {citizens.map((citizen, idx) => (
               <Card key={idx} className="p-4 text-center hover:border-primary transition-colors">
-                <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-3 flex items-center justify-center text-2xl">
-                  👤
+                <div className="w-16 h-16 rounded-full bg-muted mx-auto mb-3 flex items-center justify-center border border-border">
+                  <svg className="w-8 h-8 text-muted-foreground" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="8" r="3"/>
+                    <path d="M12 14c-4 0-6 3-6 5v2h12v-2c0-2-2-5-6-5z"/>
+                  </svg>
                 </div>
                 <h4 className="font-bold">{citizen.name}</h4>
                 <p className="text-sm text-muted-foreground mt-1">Гражданин</p>

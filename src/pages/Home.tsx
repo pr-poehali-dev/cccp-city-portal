@@ -62,6 +62,11 @@ const Home = () => {
                 Метрополитен
               </Button>
             </Link>
+            <Link to="/gallery">
+              <Button variant="ghost" className="text-primary-foreground hover:bg-primary/80 rounded-none">
+                Галерея
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
@@ -132,6 +137,18 @@ const Home = () => {
               </div>
               <p className="text-muted-foreground">
                 Правила и информация о метро
+              </p>
+            </Card>
+          </Link>
+
+          <Link to="/gallery">
+            <Card className="p-6 hover:border-primary transition-colors cursor-pointer h-full">
+              <div className="flex items-center gap-3 mb-3">
+                <Icon name="Images" className="text-primary" size={32} />
+                <h3 className="text-2xl font-bold">Галерея</h3>
+              </div>
+              <p className="text-muted-foreground">
+                Фотографии строительства и мероприятий
               </p>
             </Card>
           </Link>

@@ -9,6 +9,7 @@ import Leadership from "./pages/Leadership";
 import News from "./pages/News";
 import Lyubertsy from "./pages/Lyubertsy";
 import Metro from "./pages/Metro";
+import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/news" element={<News />} />
           <Route path="/lyubertsy" element={<Lyubertsy />} />
           <Route path="/metro" element={<Metro />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
